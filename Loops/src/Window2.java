@@ -18,10 +18,10 @@
  *
  */
 
-public class Window {
+public class Window2 {
 
     /** A constant to control the size of the shapes in this class */
-    public static final int SIZE = 3;
+    public static final int SIZE = 5;
 
     /** A constant with the number of panes per sash */
     public static final int PANES = 2;
@@ -32,18 +32,21 @@ public class Window {
     public static final char VERTICAL = '|';
     public static final char GLASS = ' ';
 
+    public static void x(char a, char b) {
+        for (int pane = 0; pane < PANES; pane++) {
+            System.out.print(a);
+            for (int i = 0; i < SIZE; i++) {
+                System.out.print(b);
+            }
+        }
+        System.out.println(a);
+    }
 
     /**
      * Creates the horizontal frame part
      */
     public static void frame() {
-        for (int pane = 0; pane < PANES; pane++) {
-            System.out.print(CORNER);
-            for (int i = 0; i < SIZE; i++) {
-                System.out.print(FRAME);
-            }
-        }
-        System.out.println(CORNER);
+        x(CORNER,FRAME);
     }  // method frame
 
 
@@ -52,13 +55,7 @@ public class Window {
      */
     public static void glassPanes() {
         for (int height = 0; height < SIZE; height++) {
-            for (int pane = 0; pane < PANES; pane++) {
-                System.out.print(VERTICAL);
-                for (int i = 0; i < SIZE; i++) {
-                    System.out.print(GLASS);
-                }
-            }
-            System.out.println(VERTICAL);
+            x(VERTICAL, GLASS);
         }
     }  // method sash
 
