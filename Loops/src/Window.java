@@ -28,7 +28,7 @@ public class Window {
 
     /** Constants with construction elements */
     public static final char CORNER = '+';
-    public static final char FRAME = '=';
+    public static final char HORIZONTAL = '=';
     public static final char VERTICAL = '|';
     public static final char GLASS = ' ';
 
@@ -40,7 +40,7 @@ public class Window {
         for (int pane = 0; pane < PANES; pane++) {
             System.out.print(CORNER);
             for (int i = 0; i < SIZE; i++) {
-                System.out.print(FRAME);
+                System.out.print(HORIZONTAL);
             }
         }
         System.out.println(CORNER);
