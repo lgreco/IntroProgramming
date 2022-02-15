@@ -60,7 +60,7 @@ public class Window {
             }
             System.out.println(VERTICAL);
         }
-    }  // method sash
+    }  // method glassPanes
 
 
     /**
