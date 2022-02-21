@@ -27,7 +27,12 @@ public class BinarySearch {
         /*
         The following loop will end when a search value is found or when the vale we are looking
         for is not found. A failed search will cause the left index to become larger than the right
-        index. Consider the example with the array {0, 1, 2, 3, 4, 5, 6, 7} below, were the initials
+        index.
+
+        The loop focuses on an increasingly smaller segment of the array, bounded by a LEFT and a
+        RIGHT position, that is subsequent split into two parts along a MIDDLE point.
+
+         Consider the example with the array {0, 1, 2, 3, 4, 5, 6, 7} below, were the initials
         L, R, M indicate the left and right edges for each search, and M is the mid point between L and R.
 
                 Looking for 6                       Looking for 61
