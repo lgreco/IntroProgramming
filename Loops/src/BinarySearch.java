@@ -22,12 +22,35 @@ public class BinarySearch {
         // Say something
         System.out.printf("\nInput array: %s", Arrays.toString(array));
         System.out.printf("\nSearch target is %d\n", target);
+        /*
+        The following loop will end when a search value is found or when the vale we are looking
+        for is not found. A failed search will cause the left index to become larger than the right
+        index. Consider the example with the array {0, 1, 2, 3, 4, 5, 6, 7} below, were the initials
+        L, R, M indicate the left and right edges for each search, and M is the mid point between L and R.
+
+                Looking for 6                       Looking for 61
+
+        First   {0, 1, 2, 3, 4, 5, 6, 7}            {0, 1, 2, 3, 4, 5, 6, 7}
+        pass     L        M           R              L        M           R
+
+        Second  {0, 1, 2, 3, 4, 5, 6, 7}            {0, 1, 2, 3, 4, 5, 6, 7}
+        Pass                 L  M     R                         L   M     R
+
+        Third  {0, 1, 2, 3, 4, 5, 6, 7}            {0, 1, 2, 3, 4, 5, 6, 7}
+        Pass                      L  R                                L  R
+                                  M                                   M
+        Four
+        pass    No need; element found              Loop will encounter values
+                                                        left = 8
+                                                        right = 7
+                                                    that will cause it to stop
+         */
         while (left <= right & !found) {
             // Find the middle point between left and right positions
             int middle = (left+right)/2;
             // Say something
-            System.out.printf("\n\tIteration # %d: left is at [%d], right at [%d], and middle is at [%d]",
-                    counter, left, right, middle);
+            //System.out.printf("\n\tIteration # %d: left is at [%d], right at [%d], and middle is at [%d]",
+             //       counter, left, right, middle);
             // Can we be so lucky?
             if (target == array[middle]) {
                 found = true;
@@ -39,6 +62,9 @@ public class BinarySearch {
                 // move to the right half
                 left = middle+1;
             }
+
+            System.out.printf("\n\tIteration # %d: left is at [%d], right at [%d], and middle is at [%d]",
+                    counter, left, right, middle);
             // Increase counter
             counter++;
         }
@@ -48,7 +74,7 @@ public class BinarySearch {
     /** Driver code */
     public static void main(String[] args) {
         // Array to search
-        int[] testArray = {1, 2, 3, 4, 5, 6, 7, 8};
+        int[] testArray = {0, 1, 2, 3, 4, 5, 6, 7};
         // Value to search for
         int searchFor = 61;
         // Position of element we are searchin for (-1 if not present)
