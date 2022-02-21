@@ -4,7 +4,8 @@ public class BinarySearch {
 
     /**
      * Performs binary search on an array of integers and reports the position of a specified number.
-     * If the number we look for, is not in the array the method returns -1
+     * If the number we look for, is not in the array the method returns -1. The method uses an
+     * iterative structure instead of the customary recursion. It is for illustrative purposes only.
      * @param array Array to search through; must be sorted
      * @param target Number of find in array
      * @return index of found number; -1 if it doesn't exist
