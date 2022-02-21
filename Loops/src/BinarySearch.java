@@ -3,10 +3,11 @@ import java.util.Arrays;
 public class BinarySearch {
 
     /**
-     * Performs binary search on an array of integers and reports the position of a specified number.
+     * Performs binary search on an sorted array of integers and reports the position of a specified number.
      * If the number we look for, is not in the array the method returns -1. The method uses an
      * iterative structure instead of the customary recursion. It is for illustrative purposes only.
-     * @param array Array to search through; must be sorted
+     *
+     * @param array Array of integers to search through; must be sorted
      * @param target Number of find in array
      * @return index of found number; -1 if it doesn't exist
      */
@@ -30,6 +31,7 @@ public class BinarySearch {
         L, R, M indicate the left and right edges for each search, and M is the mid point between L and R.
 
                 Looking for 6                       Looking for 61
+                (element at position [6])           (element does not exist)
 
         First   {0, 1, 2, 3, 4, 5, 6, 7}            {0, 1, 2, 3, 4, 5, 6, 7}
         pass     L        M           R              L        M           R
