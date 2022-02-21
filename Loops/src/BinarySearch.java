@@ -49,8 +49,8 @@ public class BinarySearch {
             // Find the middle point between left and right positions
             int middle = (left+right)/2;
             // Say something
-            //System.out.printf("\n\tIteration # %d: left is at [%d], right at [%d], and middle is at [%d]",
-             //       counter, left, right, middle);
+            System.out.printf("\n\tIteration # %d: left is at [%d], right at [%d], and middle is at [%d]",
+                    counter, left, right, middle);
             // Can we be so lucky?
             if (target == array[middle]) {
                 found = true;
@@ -62,9 +62,8 @@ public class BinarySearch {
                 // move to the right half
                 left = middle+1;
             }
-
-            System.out.printf("\n\tIteration # %d: left is at [%d], right at [%d], and middle is at [%d]",
-                    counter, left, right, middle);
+            // Say something
+            System.out.printf("... next, L = %d and R = %d", left, right);
             // Increase counter
             counter++;
         }
