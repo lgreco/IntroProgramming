@@ -1,2 +1,12 @@
+.git
+.gitignore
+*.jar
 *.class
+*.graffle
 *.iml
+*.sakai
+**/out
+**/.idea
+*NOT_FOR_SHARING*
+*NFS*
+.DS_Store
