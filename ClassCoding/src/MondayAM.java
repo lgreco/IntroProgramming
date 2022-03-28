@@ -68,6 +68,6 @@ public class MondayAM {
                 next_large = input;
             inputLetter = s.next();
         }
-        System.out.println((char)large+(char)next_large);
+        System.out.printf("%s %s", large, next_large);
     }
 }
