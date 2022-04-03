@@ -6,15 +6,13 @@
  *      Shape             Description
  *    +===+===+           * top frame: corner element (+) followed by SIZE times horizontal element (=)
  *    |   |   |           * upper sash made of vertical element, followed by SIZE times the
- *    |   |   |             "glasss" element (just an empty space), repeated twice, and then
+ *    |   |   |             "glass" element (just an empty space), repeated twice, and then
  *    |   |   |             repeating itself SIZE times.
  *    +===+===+           * mid frame: same construction as top frame
  *    |   |   |           * bottom sash: same as top sash.
  *    |   |   |
  *    |   |   |
  *    +===+===+           * bottom frame: same construction as top frame
- *
- *
  *
  */
 
