@@ -12,7 +12,7 @@ public class FiveLetters {
     static final String LINK = "https://raw.githubusercontent.com/dwyl/english-words/master/words.txt";
 
     /** Desired size of words to read */
-    static final int DESIRED_LENGTH = 7;
+    static final int DESIRED_LENGTH = 5;
 
     /** Number of letters in the alphabet */
     static final int ALPHABET = 26;
