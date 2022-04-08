@@ -31,20 +31,28 @@ public class FiveLetters {
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(url.openStream()));
         int wordCount = 0;
-        String inputLine;
-        while ((inputLine = in.readLine()) != null)
+        String inputLine = in.readLine();
+        while (inputLine != null) {
+            inputLine = inputLine.toLowerCase();
             if (inputLine.length() == DESIRED_LENGTH && inputLine.charAt(0) >= 'a' && inputLine.charAt(0) <= 'z')
                 wordCount++;
+            inputLine = in.readLine();
+        }
         in.close();
-        String[] words = new String[wordCount];
-        int index = 0;
+
         in = new BufferedReader(
                 new InputStreamReader(url.openStream()));
-        while ((inputLine = in.readLine()) != null)
+        String[] words = new String[wordCount];
+        int index = 0;
+        inputLine = in.readLine();
+        while (inputLine != null && index < words.length) {
+            inputLine = inputLine.toLowerCase();
             if (inputLine.length() == DESIRED_LENGTH && inputLine.charAt(0) >= 'a' && inputLine.charAt(0) <= 'z') {
                 words[index] = inputLine;
                 index++;
             }
+            inputLine = in.readLine();
+        }
         in.close();
         return words;
     }  // method readWords
@@ -59,7 +67,7 @@ public class FiveLetters {
             word += randomCharacter;
         }
         return word;
-    }
+    }  // method randomWord
 
     static boolean isValid(String myWord, String[] dictionary) {
         boolean found = false;
@@ -69,20 +77,29 @@ public class FiveLetters {
             index++;
         }
         return found;
+    }  // method isValid
+
+    public static boolean isValidBinary(String word, String[] dictionary) {
+        word = word.toLowerCase();
+        int left = 0;
+        int right = dictionary.length-1;
+        boolean found = false;
+        while (!found && left < right) {
+            int middle = left+(right-left)/2;
+            String middleWord = dictionary[middle];
+            System.out.printf("\n Left Middle Right: %d %d %d", left, middle, right);
+            if (word.compareTo(middleWord) < 0)
+                right = middle-1;
+            else if (word.compareTo(middleWord) > 0)
+                left = 1+left + (right-left)/2;
+            else
+                found = true;
+        }
+        return found;
     }
 
     public static void main(String[] args) throws Exception {
         String[] fiveLetters = readWords(LINK);
-        boolean valid = false;
-        int numberOfAttempts = 0;
-        while (!valid) {
-            String rw = randomWord(DESIRED_LENGTH);
-            valid = isValid(rw, fiveLetters);
-            System.out.printf("\nIs the word %s in the dictionary? %s",
-                    rw, valid);
-            numberOfAttempts++;
-        }
-        System.out.printf("\nIt took us %d attempts to find a valid word.",
-                numberOfAttempts);
+        System.out.println(isValidBinary("hello", fiveLetters));
     }
 }
