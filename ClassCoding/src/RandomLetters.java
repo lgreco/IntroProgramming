@@ -1,18 +1,39 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
+import java.util.Scanner;
 
 public class RandomLetters {
 
     public static final int ASCII_a = (int) 'a';
     public static final int ALPHABET = 26;
 
-    public static final String DICTIONARY_LINK = "https://raw.githubusercontent.com/dwyl/english-words/master/words.txt";
+    public static final String DICTIONARY_LINK = "https://raw.githubusercontent.com/lgreco/IntroProgramming/main/data/words.txt";
 
     public static String[] dictionary;
+
+    public static Scanner scanFile(String filename) {
+        Scanner sc;
+        try {
+            sc = new Scanner(new File(filename));
+        } catch (Exception e) {
+            sc = null;
+        }
+        return sc;
+    }
+
+    public static int countLines(String fileName) {
+        Scanner file = scanFile(fileName);
+        int counter = 0;
+        if (file != null) {
+            while (file.hasNextLine()) {
+                String s = file.nextLine();
+                counter++;
+            }
+        }
+        return counter;
+    }
 
     // Create a word with a specified number of random,
     // lower case letters.
@@ -33,13 +54,15 @@ public class RandomLetters {
         int counter = 0;
         // Go to the URL specified by link here
         URL url = new URL(link);
-        BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-        String inputLine = in.readLine();
-        while (inputLine != null) {
+        Scanner sc = new Scanner(new InputStreamReader(url.openStream()));
+        String inputLine = sc.nextLine();
+        while (sc.hasNextLine()) {
             inputLine = inputLine.toLowerCase();
-            if (inputLine.length() == wordSize && inputLine.charAt(0) >= 'a' && inputLine.charAt(0) <= 'z')
+            if (inputLine.length() == wordSize && inputLine.charAt(0) >= 'a' && inputLine.charAt(0) <= 'z') {
                 counter++;
-            inputLine = in.readLine();
+                System.out.println(inputLine);
+            }
+            inputLine = sc.nextLine();
         }
         return counter;
     }  // method countWords
@@ -74,9 +97,10 @@ public class RandomLetters {
 
     public static void main(String[] args) throws IOException {
         String testWord = "hello";
-        int desired_size = testWord.length();
-        int numberOfThoseWords = countWords(desired_size, DICTIONARY_LINK);
-        createDictionary(numberOfThoseWords,DICTIONARY_LINK,desired_size);
-        System.out.println(isWordValid(testWord));
+        System.out.println(countWords(4, DICTIONARY_LINK));
+
     }
+
+
+
 }
